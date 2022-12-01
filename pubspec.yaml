@@ -10,16 +10,20 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  audioplayers: ^1.1.1
   http: ^0.13.5
   get: ^4.6.5
   get_storage: ^2.0.3
   rxdart: ^0.27.7
-  url_launcher: ^6.1.7
   cached_network_image: ^3.2.3
   flutter_svg: ^1.1.6
   overlay_support: ^2.1.0
   auto_size_text: ^3.0.0
+  just_audio: ^0.9.30
+  file_picker: ^5.2.3
+  id3: ^1.0.2
+  audio_service: ^0.18.7
+  url_launcher: ^6.1.7
+  ionicons: ^0.2.1
 
 dev_dependencies:
   flutter_test:

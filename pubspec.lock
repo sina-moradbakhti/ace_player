@@ -8,55 +8,34 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
-  audioplayers:
+  audio_service:
     dependency: "direct main"
     description:
-      name: audioplayers
+      name: audio_service
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
-  audioplayers_android:
+    version: "0.18.7"
+  audio_service_platform_interface:
     dependency: transitive
     description:
-      name: audioplayers_android
+      name: audio_service_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
-  audioplayers_darwin:
+    version: "0.1.0"
+  audio_service_web:
     dependency: transitive
     description:
-      name: audioplayers_darwin
+      name: audio_service_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.3"
-  audioplayers_linux:
+    version: "0.1.1"
+  audio_session:
     dependency: transitive
     description:
-      name: audioplayers_linux
+      name: audio_session
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.1"
-  audioplayers_platform_interface:
-    dependency: transitive
-    description:
-      name: audioplayers_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
-  audioplayers_web:
-    dependency: transitive
-    description:
-      name: audioplayers_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
-  audioplayers_windows:
-    dependency: transitive
-    description:
-      name: audioplayers_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
+    version: "0.1.11"
   auto_size_text:
     dependency: "direct main"
     description:
@@ -148,6 +127,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.4"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -174,6 +160,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.7"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -219,6 +212,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
+  id3:
+    dependency: "direct main"
+    description:
+      name: id3
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.2"
+  ionicons:
+    dependency: "direct main"
+    description:
+      name: ionicons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.1"
   js:
     dependency: transitive
     description:
@@ -226,6 +233,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
+  just_audio:
+    dependency: "direct main"
+    description:
+      name: just_audio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.30"
+  just_audio_platform_interface:
+    dependency: transitive
+    description:
+      name: just_audio_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
+  just_audio_web:
+    dependency: transitive
+    description:
+      name: just_audio_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.7"
   lints:
     dependency: transitive
     description:

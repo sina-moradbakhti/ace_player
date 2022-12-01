@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:ace_player/blocs/base.bloc.dart';
+import 'package:ace_player/models/music.model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_media_metadata/flutter_media_metadata.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:file_picker/file_picker.dart';
@@ -14,49 +16,51 @@ class HomeBloc extends BlocBase {
   final filePicker = FilePicker.platform;
 
   // Audio Player
-  var currentIndexPlaying = ''.obs;
+  var currentMusicPath = ''.obs;
   final player = AudioPlayer();
 
-  List<Map<String, String>> musicList = [];
+  List<MusicModel> musics = [];
 
   final pageController = PageController(initialPage: -1);
 
-  void pause() {
-    if (player.playing) {
-      player.pause();
-      currentIndexPlaying.value = '';
-      return;
-    }
-  }
-
-  void listenMusic(int musicIndex) async {
-    if (player.playing) {
+  void play(MusicModel music) async {
+    if (player.playing && music.path != currentMusicPath.value) {
       player.stop();
-      currentIndexPlaying.value = '';
-      return;
+      currentMusicPath.value = music.path;
     }
-    // await player.setSourceUrl(musicList[musicIndex]);
-    player.setFilePath(musicList[musicIndex]['link']!);
-    try {
-      currentIndexPlaying.value = musicIndex.toString();
-      await player.play();
-      print('Duration: ${player.duration?.inSeconds} seconds');
 
-      List<int> mp3Bytes =
-          await File(musicList[musicIndex]['link']!).readAsBytes();
-      MP3Instance mp3instance = MP3Instance(mp3Bytes);
-      if (mp3instance.parseTagsSync()) {
-        print(mp3instance.getMetaTags());
-      }
+    player.setFilePath(music.path);
+    try {
+      currentMusicPath.value = music.path;
+      await player.play();
     } catch (er) {
       print(er);
     }
   }
 
+  void pause() {
+    player.pause();
+    currentMusicPath.value = '';
+  }
+
+  void stop() {
+    player.stop();
+    currentMusicPath.value = '';
+  }
+
   void import() async {
     final result = await filePicker.pickFiles(allowMultiple: true);
     for (final file in result?.files ?? []) {
-      musicList.add({'link': file.path, 'name': file.name});
+      List<int> mp3Bytes = await File(file.path).readAsBytes();
+      MP3Instance mp3instance = MP3Instance(mp3Bytes);
+      final metaDataExtra = await MetadataRetriever.fromFile(File(file.path));
+      if (mp3instance.parseTagsSync()) {
+        final json = mp3instance.getMetaTags() ?? {};
+        json['path'] = file.path;
+        json['filename'] = file.name;
+        json['duration'] = ((metaDataExtra.trackDuration ?? 0) / 1000).ceil();
+        musics.add(MusicModel.fromJson(json));
+      }
     }
     updateList.value = !updateList.value;
   }

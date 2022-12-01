@@ -38,6 +38,8 @@ PODS:
     - DKImagePickerController/PhotoGallery
     - Flutter
   - Flutter (1.0.0)
+  - flutter_media_metadata (0.0.1):
+    - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -60,6 +62,7 @@ DEPENDENCIES:
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
+  - flutter_media_metadata (from `.symlinks/plugins/flutter_media_metadata/ios`)
   - just_audio (from `.symlinks/plugins/just_audio/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
@@ -82,6 +85,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
     :path: Flutter
+  flutter_media_metadata:
+    :path: ".symlinks/plugins/flutter_media_metadata/ios"
   just_audio:
     :path: ".symlinks/plugins/just_audio/ios"
   path_provider_ios:
@@ -98,6 +103,7 @@ SPEC CHECKSUMS:
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: 817ab1d8cd2da9d2da412a417162deee3500fc95
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_media_metadata: 9db7298c789a54da26e0d2f6f808fa39bfd9bcd7
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   just_audio: baa7252489dbcf47a4c7cc9ca663e9661c99aafa
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02

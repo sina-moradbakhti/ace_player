@@ -120,4 +120,9 @@ class AppTextStyles {
       fontSize: 14,
       fontWeight: FontWeight.w500,
       color: AppColors.textBlackColor);
+
+  static TextStyle bold = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textBlackColor);
 }

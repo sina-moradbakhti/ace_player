@@ -6,4 +6,8 @@ class ApicModel {
 
   factory ApicModel.fromJson(Map<String, dynamic> json) =>
       ApicModel(mime: json['mime'], base64Data: json['base64']);
+
+  Map<String, dynamic> toJson() {
+    return {'mime': mime, 'base64': base64Data};
+  }
 }

@@ -22,15 +22,31 @@ class MusicModel {
       this.title,
       this.year});
 
-  factory MusicModel.fromJson(Map<String, dynamic> json) => MusicModel(
-        filename: json['filename'],
-        path: json['path'],
-        duration: json['duration'],
-        album: json['Album'],
-        apic: ApicModel.fromJson(json['APIC']),
-        artist: json['Artist'],
-        genre: json['Genre'],
-        title: json['Title'],
-        year: int.tryParse(json['Year']),
-      );
+  factory MusicModel.fromJson(Map<String, dynamic> json) {
+    return MusicModel(
+      filename: json['filename'],
+      path: json['path'],
+      duration: json['duration'],
+      album: json['Album'],
+      apic: ApicModel.fromJson(json['APIC']),
+      artist: json['Artist'],
+      genre: json['Genre'],
+      title: json['Title'],
+      year: int.tryParse(json['Year'].toString()),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'filename': filename,
+      'path': path,
+      'duration': duration,
+      'Title': title,
+      'Artist': artist,
+      'Album': album,
+      'Year': year,
+      'Genre': genre,
+      'APIC': apic?.toJson()
+    };
+  }
 }

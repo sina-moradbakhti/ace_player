@@ -47,13 +47,8 @@ class AppConfigs {
           width: 1, color: const Color(0xff000000).withOpacity(0.25)));
 
   // Storage Keys
-  static String storageKeyIsUserLoggedIn = 'STORAGE_IS_USER_LOGGED_IN';
-  static String storageKeyUserStatus = 'STORAGE_USER_STATUS';
-  static String storageKeyUserToken = 'STORAGE_USER_TOKEN';
-  static String storageKeyUserData = 'STORAGE_USER_DATA';
+  static String storageKeyMusics = 'STORAGE_KEY_MUSICS';
 }
-
-enum StorageKeyUserStatusValue { unCompleteProfile, active, pending }
 
 class AppColors {
   AppColors._();

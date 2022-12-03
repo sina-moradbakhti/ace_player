@@ -1,5 +1,6 @@
 import 'package:ace_player/configs.dart';
 import 'package:ace_player/routes.dart';
+import 'package:al_downloader/al_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -7,6 +8,7 @@ import 'package:get_storage/get_storage.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
+  ALDownloaderPrintConfig.enabled = false;
   runApp(const MyApp());
 }
 

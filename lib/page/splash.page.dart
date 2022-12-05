@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ace_player/blocs/splash.bloc.dart';
 import 'package:ace_player/configs.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +19,9 @@ class SplashPage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
+            Center(
+              child: Image.asset('assets/images/png/default-album-art.png'),
+            ),
             Text(
               'Ace Player',
               style: AppTextStyles.headline1,

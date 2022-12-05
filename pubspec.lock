@@ -8,6 +8,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.5"
+  assets_audio_player:
+    dependency: "direct main"
+    description:
+      name: assets_audio_player
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
+  assets_audio_player_web:
+    dependency: transitive
+    description:
+      name: assets_audio_player_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.6"
   async:
     dependency: transitive
     description:
@@ -15,34 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.9.0"
-  audio_service:
-    dependency: "direct main"
-    description:
-      name: audio_service
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.18.7"
-  audio_service_platform_interface:
-    dependency: transitive
-    description:
-      name: audio_service_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.0"
-  audio_service_web:
-    dependency: transitive
-    description:
-      name: audio_service_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
-  audio_session:
-    dependency: transitive
-    description:
-      name: audio_session
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.11"
   auto_size_text:
     dependency: "direct main"
     description:
@@ -268,27 +254,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.4"
-  just_audio:
-    dependency: "direct main"
-    description:
-      name: just_audio
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.30"
-  just_audio_platform_interface:
-    dependency: transitive
-    description:
-      name: just_audio_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.2.0"
-  just_audio_web:
-    dependency: transitive
-    description:
-      name: just_audio_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.7"
   lints:
     dependency: transitive
     description:

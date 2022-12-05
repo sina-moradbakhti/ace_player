@@ -5,6 +5,7 @@ import 'package:ace_player/blocs/base.bloc.dart';
 import 'package:ace_player/components/bottom_sheets/download_music.sheet.dart';
 import 'package:ace_player/components/bottom_sheets/music_import.sheet.dart';
 import 'package:ace_player/configs.dart';
+import 'package:ace_player/models/apic.model.dart';
 import 'package:ace_player/models/music.model.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_media_metadata/flutter_media_metadata.dart';
@@ -14,6 +15,9 @@ import 'package:id3/id3.dart';
 
 class MusicsBloc extends BlocBase {
   var updateList = true.obs;
+
+  Directory? appDocDir;
+  String? appDocPath;
 
   // File Picker
   final filePicker = FilePicker.platform;
@@ -37,6 +41,12 @@ class MusicsBloc extends BlocBase {
       final exist =
           repo.musics.where((element) => element.path == file).toList();
       if (exist.isEmpty) {
+        final apic = ApicModel.fromJson(metaData['APIC']);
+        final musicArtFilePath =
+            '$appDocPath/al_flutter/al_audio/${metaData['filename']}.jpg';
+        await File(musicArtFilePath)
+            .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+
         _addMusicToMusics(metaData);
         updateList.value = !updateList.value;
 
@@ -87,12 +97,15 @@ class MusicsBloc extends BlocBase {
 
       json['filename'] = !isPath ? file.name : filename;
       json['duration'] = ((metaDataExtra.trackDuration ?? 0) / 1000).ceil();
+      final apic = ApicModel.fromJson(json['APIC']);
 
       if (!isPath) {
-        Directory appDocDir = await pp.getApplicationDocumentsDirectory();
-        String appDocPath = appDocDir.path;
-        await File('$appDocPath/${json['filename']}').writeAsBytes(mp3Bytes);
-        json['path'] = '$appDocPath/${json['filename']}';
+        final musicFilePath = '$appDocPath/${json['filename']}';
+        final musicArtFilePath = '$appDocPath/${json['filename']}.jpg';
+        await File(musicArtFilePath)
+            .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+        await File(musicFilePath).writeAsBytes(mp3Bytes);
+        json['path'] = musicFilePath;
       } else {
         json['path'] = !isPath ? file.path : file;
       }
@@ -100,5 +113,16 @@ class MusicsBloc extends BlocBase {
       return json;
     }
     return null;
+  }
+
+  _initDir() async {
+    appDocDir = await pp.getApplicationDocumentsDirectory();
+    appDocPath = appDocDir!.path;
+  }
+
+  @override
+  void onInit() {
+    _initDir();
+    super.onInit();
   }
 }

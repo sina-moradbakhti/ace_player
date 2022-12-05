@@ -15,7 +15,7 @@ class MusicItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => (repo.player.player.playing &&
+      onTap: () => (repo.player.player.isPlaying.value &&
               music.path == repo.player.currentMusic?.path)
           ? repo.player.pause(music)
           : repo.player.play(music),
@@ -35,7 +35,7 @@ class MusicItem extends StatelessWidget {
                         uniqueKey: music.path,
                         base64: music.apic?.base64Data ?? ''),
                     Center(
-                      child: (repo.player.player.playing &&
+                      child: (repo.player.player.isPlaying.value &&
                               music.path == repo.player.currentMusic?.path)
                           ? const Icon(Ionicons.pause_outline,
                               color: Colors.white)

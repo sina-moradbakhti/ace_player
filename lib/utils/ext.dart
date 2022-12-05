@@ -1,3 +1,5 @@
+import 'package:assets_audio_player/assets_audio_player.dart';
+
 extension MusicPlayerExtensionOnInt on int {
   String toDuration() {
     final seconds = this;

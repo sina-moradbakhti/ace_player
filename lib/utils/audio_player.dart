@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:ace_player/models/music.model.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 class MyAudioPlayer {
   static final MyAudioPlayer _singleton = MyAudioPlayer._internal();
@@ -8,15 +10,15 @@ class MyAudioPlayer {
   }
   MyAudioPlayer._internal();
 
-  final player = AudioPlayer();
+  final player = AssetsAudioPlayer();
   MusicModel? currentMusic;
 
   void play(MusicModel music) async {
-    if (player.playing && currentMusic?.path != music.path) {
+    if (player.isPlaying.value && currentMusic?.path != music.path) {
       await player.stop();
       currentMusic = music;
       _newPlay(music);
-    } else if (!player.playing && currentMusic?.path == music.path) {
+    } else if (!player.isPlaying.value && currentMusic?.path == music.path) {
       await player.play();
     } else {
       await _newPlay(music);
@@ -24,9 +26,25 @@ class MyAudioPlayer {
   }
 
   Future<void> _newPlay(MusicModel music) async {
-    player.setFilePath(music.path);
+    currentMusic = music;
     try {
-      currentMusic = music;
+      await player.open(
+          Audio.file(music.path,
+              metas: Metas(
+                  title: music.title ?? '',
+                  artist: music.artist ?? '',
+                  album: music.album ?? '',
+                  image: MetasImage.file('${music.path}.jpg'),
+                  onImageLoadFail: const MetasImage.network(
+                      'https://songdewnetwork.com/sgmedia/assets/images/default-album-art.png'))),
+          showNotification: true,
+          notificationSettings: const NotificationSettings(
+            playPauseEnabled: true,
+            nextEnabled: true,
+            seekBarEnabled: true,
+            prevEnabled: true,
+            stopEnabled: true,
+          ));
       await player.play();
     } catch (er) {
       print(er);

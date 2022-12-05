@@ -51,7 +51,7 @@ class MusicsPage extends StatelessWidget {
       body: StreamBuilder(
         stream: bloc.updateList.stream,
         builder: (context, snapshot) => StreamBuilder(
-          stream: bloc.repo.player.player.playingStream,
+          stream: bloc.repo.player.player.playerState,
           builder: (context, snapshot) {
             return _myList;
           },

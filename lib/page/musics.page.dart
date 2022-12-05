@@ -14,7 +14,6 @@ class MusicsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.scaffoldBackground,
         title: Text(
           'Musics',
           style: AppTextStyles.headline2,

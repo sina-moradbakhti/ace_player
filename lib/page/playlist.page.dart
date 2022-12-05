@@ -10,7 +10,6 @@ class PlaylistPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: AppColors.scaffoldBackground,
         title: Text(
           'Playlists',
           style: AppTextStyles.headline2,

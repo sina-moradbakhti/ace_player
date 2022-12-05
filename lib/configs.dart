@@ -16,6 +16,10 @@ class AppConfigs {
   static const String baseApiUrl = 'xxx';
   static const String baseUrl = 'xxxx';
   static const String version = '1.0.0';
+  static const String privacyLink = 'http://asbrothers.ca/privacy';
+  static const String termsLink = 'http://asbrothers.ca/terms';
+  static const String buyMeCoffeLink =
+      'https://www.buymeacoffee.com/asbrothers';
 
   // App routes and pages
   static List<GetPage> pages = [
@@ -38,7 +42,36 @@ class AppConfigs {
         // focusedBorder: _outlineInputBorder,
         // focusedErrorBorder: _outlineInputBorder,
       ),
-      scaffoldBackgroundColor: AppColors.scaffoldBackground);
+      scaffoldBackgroundColor: AppColors.scaffoldBackground,
+      bottomSheetTheme:
+          BottomSheetThemeData(backgroundColor: AppColors.scaffoldBackground),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.scaffoldBackground,
+      ),
+      appBarTheme: AppBarTheme(backgroundColor: AppColors.scaffoldBackground));
+
+  static ThemeData appThemeDarkData = ThemeData(
+      primarySwatch: Colors.lightBlue,
+      fontFamily: 'Nunito',
+      textTheme: _appTextTheme,
+      inputDecorationTheme: InputDecorationTheme(
+        border: _outlineInputBorder,
+        isDense: true,
+        filled: true,
+        enabledBorder: _outlineInputBorder,
+        errorBorder: _outlineInputBorder,
+        disabledBorder: _outlineInputBorder,
+        // focusedBorder: _outlineInputBorder,
+        // focusedErrorBorder: _outlineInputBorder,
+      ),
+      scaffoldBackgroundColor: AppColors.scaffoldDarkBackground,
+      bottomSheetTheme: BottomSheetThemeData(
+          backgroundColor: AppColors.scaffoldDarkBackground),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: AppColors.scaffoldDarkBackground,
+      ),
+      appBarTheme:
+          AppBarTheme(backgroundColor: AppColors.scaffoldDarkBackground));
 
   static const TextTheme _appTextTheme = TextTheme();
   static final InputBorder _outlineInputBorder = OutlineInputBorder(
@@ -48,6 +81,8 @@ class AppConfigs {
 
   // Storage Keys
   static String storageKeyMusics = 'STORAGE_KEY_MUSICS';
+  static String storageKeyPlayLists = 'STORAGE_KEY_PLAYLISTS';
+  static String storageKeyDarkMod = 'STORAGE_KEY_DARK_MOD';
 }
 
 class AppColors {
@@ -62,6 +97,7 @@ class AppColors {
   static Color darkGrey = const Color(0xff606060);
   static Color textBlackColor = const Color(0xff040921);
   static Color scaffoldBackground = const Color(0xffFAFAFA);
+  static Color scaffoldDarkBackground = const Color.fromARGB(255, 46, 46, 46);
 
   static LinearGradient blueGreenLightGradient = LinearGradient(colors: [
     AppColors.mainBlue.withOpacity(0.08),
@@ -112,7 +148,7 @@ class AppTextStyles {
       color: AppColors.textBlackColor);
 
   static TextStyle normal = TextStyle(
-      fontSize: 14,
+      fontSize: 15,
       fontWeight: FontWeight.w500,
       color: AppColors.textBlackColor);
 

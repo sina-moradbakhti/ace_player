@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:ace_player/blocs/splash.bloc.dart';
 import 'package:ace_player/configs.dart';
+import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,12 +20,19 @@ class SplashPage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Center(
-              child: Image.asset('assets/images/png/default-album-art.png'),
-            ),
-            Text(
-              'Ace Player',
-              style: AppTextStyles.headline1,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image.asset('icon_purple_play'.getPngPath)),
+                const SizedBox(height: 30),
+                Text(
+                  'Ace Player',
+                  style: AppTextStyles.headline1,
+                ),
+              ],
             ),
             Align(
               alignment: Alignment.bottomCenter,

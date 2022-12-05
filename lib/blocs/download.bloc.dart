@@ -1,7 +1,6 @@
 import 'package:ace_player/blocs/base.bloc.dart';
 import 'package:ace_player/models/dl_status.enum.dart';
 import 'package:al_downloader/al_downloader.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 

@@ -52,7 +52,7 @@ class MusicsPage extends StatelessWidget {
         builder: (context, snapshot) => StreamBuilder(
           stream: bloc.repo.player.player.playerState,
           builder: (context, snapshot) {
-            return _myList;
+            return bloc.repo.musics.isNotEmpty ? _myList : _emptyMusics;
           },
         ),
       ),
@@ -66,4 +66,23 @@ class MusicsPage extends StatelessWidget {
         itemCount: bloc.repo.musics.length,
         separatorBuilder: (context, index) => const Divider(),
       );
+
+  Widget get _emptyMusics => Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            Ionicons.headset_outline,
+            size: 50,
+            color: AppColors.grey,
+          ),
+          const SizedBox(height: 15),
+          Text(
+            'No Musics found!\nTap on + Import',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.normal.copyWith(color: AppColors.grey),
+          )
+        ],
+      ));
 }

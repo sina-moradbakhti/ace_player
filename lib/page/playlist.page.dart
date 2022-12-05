@@ -43,6 +43,26 @@ class PlaylistPage extends StatelessWidget {
           )
         ],
       ),
+      body: _emptyPlaylist,
     );
   }
+
+  Widget get _emptyPlaylist => Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            Ionicons.musical_notes_outline,
+            size: 50,
+            color: AppColors.grey,
+          ),
+          const SizedBox(height: 15),
+          Text(
+            'No Playlist found!\nTap on + Create',
+            textAlign: TextAlign.center,
+            style: AppTextStyles.normal.copyWith(color: AppColors.grey),
+          )
+        ],
+      ));
 }

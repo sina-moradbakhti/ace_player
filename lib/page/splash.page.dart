@@ -24,14 +24,10 @@ class SplashPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                    width: 100,
-                    height: 100,
-                    child: Image.asset('icon_purple_play'.getPngPath)),
+                    width: 150,
+                    height: 150,
+                    child: Image.asset('logo_ace_player'.getPngPath)),
                 const SizedBox(height: 30),
-                Text(
-                  'Ace Player',
-                  style: AppTextStyles.headline1,
-                ),
               ],
             ),
             Align(

@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:ace_player/blocs/download.bloc.dart';
-import 'package:ace_player/blocs/musics.bloc.dart';
 import 'package:ace_player/components/bottom_sheets/bottom_sheet_base.widget.dart';
 import 'package:ace_player/components/loading.widget.dart';
 import 'package:ace_player/configs.dart';

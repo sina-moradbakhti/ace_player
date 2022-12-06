@@ -1,46 +1,35 @@
-import 'package:ace_player/blocs/playlist.bloc.dart';
 import 'package:ace_player/configs.dart';
 import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
 
-class PlaylistPage extends StatelessWidget {
-  PlaylistPage({super.key});
-
-  final bloc = Get.put(PlaylistBloc());
+class PlanetPage extends StatelessWidget {
+  const PlanetPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
         elevation: 0,
+        centerTitle: false,
         title: Text(
-          'Playlists',
+          'Planet Community',
           style: AppTextStyles.headline2,
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 6),
             child: InkWell(
-              onTap: bloc.create,
+              // onTap: bloc.create,
               borderRadius: BorderRadius.circular(50),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.5),
                 child: Row(
                   children: [
-                    const Icon(
-                      Ionicons.add_outline,
-                      color: Colors.black,
-                      size: 21,
-                    ),
-                    const SizedBox(
-                      width: 5,
-                    ),
+                    SvgPicture.asset('103__user'.getSvgPath),
                     Text(
-                      'Create',
+                      'Login',
                       style: AppTextStyles.bold,
                     )
                   ],
@@ -63,12 +52,12 @@ class PlaylistPage extends StatelessWidget {
             width: 100,
             height: 100,
             child: SvgPicture.asset(
-              '031__list'.getSvgPath,
+              '072__planet'.getSvgPath,
               color: AppColors.grey,
             ),
           ),
           Text(
-            'No Playlist found!\nTap on + Create',
+            'A friendly place for sharing your interests\nand find your memorable songs!\n\nComing soon',
             textAlign: TextAlign.center,
             style: AppTextStyles.normal.copyWith(color: AppColors.grey),
           )

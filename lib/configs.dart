@@ -30,6 +30,8 @@ class AppConfigs {
   // Main Theme & data
   static ThemeData appThemeData = ThemeData(
       primarySwatch: Colors.deepPurple,
+      buttonTheme: const ButtonThemeData(
+          colorScheme: ColorScheme.light(onPrimary: Colors.white)),
       fontFamily: 'Nunito',
       textTheme: _appTextTheme,
       inputDecorationTheme: InputDecorationTheme(
@@ -132,6 +134,11 @@ class AppTextStyles {
       fontWeight: FontWeight.w800,
       color: AppColors.textBlackColor);
 
+  static TextStyle headline4 = TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.w800,
+      color: AppColors.textBlackColor);
+
   static TextStyle caption1 = TextStyle(
       fontSize: 17,
       fontWeight: FontWeight.w400,
@@ -155,5 +162,10 @@ class AppTextStyles {
   static TextStyle bold = TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w700,
+      color: AppColors.textBlackColor);
+
+  static TextStyle button = TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.w600,
       color: AppColors.textBlackColor);
 }

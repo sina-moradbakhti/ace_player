@@ -1,7 +1,9 @@
 import 'package:ace_player/blocs/musics.bloc.dart';
 import 'package:ace_player/components/music_item.widget.dart';
 import 'package:ace_player/configs.dart';
+import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -13,6 +15,7 @@ class MusicsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: false,
         elevation: 0,
         title: Text(
           'Musics',
@@ -72,12 +75,14 @@ class MusicsPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(
-            Ionicons.headset_outline,
-            size: 50,
-            color: AppColors.grey,
+          SizedBox(
+            width: 100,
+            height: 100,
+            child: SvgPicture.asset(
+              '140__music'.getSvgPath,
+              color: AppColors.grey,
+            ),
           ),
-          const SizedBox(height: 15),
           Text(
             'No Musics found!\nTap on + Import',
             textAlign: TextAlign.center,

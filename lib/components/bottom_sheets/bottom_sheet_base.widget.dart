@@ -18,10 +18,12 @@ class BottomSheetBaseContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
                 title,
+                textAlign: TextAlign.left,
                 style: AppTextStyles.headline3,
               ),
               const Padding(

@@ -1,5 +1,6 @@
 import 'package:ace_player/components/bottom_sheets/bottom_sheet_base.widget.dart';
 import 'package:ace_player/components/bottom_sheets/bottom_sheet_item.widget.dart';
+import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -30,6 +31,19 @@ class MusicImportBottomSheet extends StatelessWidget {
             icon: const Icon(Ionicons.cloud_outline),
             onTapped: onTappedFromClipboard,
           ),
+          const SizedBox(
+            height: 30,
+          ),
+          BottomSheetItemButton(
+            title: 'From Spottify',
+            icon: SizedBox(
+              width: 24,
+              height: 24,
+              child: Image.asset('icon_spottify'.getPngPath),
+            ),
+            onTapped: null,
+          ),
+          //
           const SizedBox(
             height: 30,
           ),

@@ -12,6 +12,8 @@ class SettingsBloc extends BlocBase {
 
   var darkMod = false.obs;
 
+  void help() {}
+
   void reportBug() {
     final mailtoLink = Mailto(
       to: ['reportbug@asbrothers.ca'],
@@ -37,6 +39,8 @@ class SettingsBloc extends BlocBase {
   void buyMeCoffe() => Uri.parse(AppConfigs.buyMeCoffeLink).launchUrl();
   void termsCondition() => Uri.parse(AppConfigs.termsLink).launchUrl();
   void privacyPolicy() => Uri.parse(AppConfigs.privacyLink).launchUrl();
+
+  void yourActivity() {}
 
   @override
   void onInit() {

@@ -1,10 +1,11 @@
 import 'package:ace_player/configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SettingsItem extends StatelessWidget {
   final VoidCallback? onTapped;
   final String title;
-  final Image? icon;
+  final SvgPicture? icon;
   final bool isLastItem;
   final bool hasSwitch;
   final bool switchOn;
@@ -17,7 +18,7 @@ class SettingsItem extends StatelessWidget {
       this.hasSwitch = false,
       this.switchOn = false});
 
-  final double _ICON_SIZE = 22;
+  final double _ICON_SIZE = 38;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class SettingsItem extends StatelessWidget {
                     bottom: BorderSide(width: 1, color: AppColors.lightGrey)))
             : const BoxDecoration(),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Row(
             mainAxisAlignment: hasSwitch
                 ? MainAxisAlignment.spaceBetween
@@ -48,7 +49,7 @@ class SettingsItem extends StatelessWidget {
                           child: icon ?? Container(),
                         ),
                         const SizedBox(
-                          width: 15,
+                          width: 10,
                         ),
                         Text(
                           title,
@@ -70,7 +71,7 @@ class SettingsItem extends StatelessWidget {
                       child: icon ?? Container(),
                     ),
                     const SizedBox(
-                      width: 15,
+                      width: 10,
                     ),
                     Text(
                       title,

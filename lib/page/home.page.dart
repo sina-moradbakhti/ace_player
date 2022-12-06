@@ -1,4 +1,5 @@
 import 'package:ace_player/blocs/home.bloc.dart';
+import 'package:ace_player/components/miniPlayer.widget.dart';
 import 'package:ace_player/configs.dart';
 import 'package:ace_player/page/planet.page.dart';
 import 'package:ace_player/page/playlist.page.dart';
@@ -17,11 +18,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: bloc.pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [MusicsPage(), PlaylistPage(), PlanetPage(), SettingsPage()],
-      ),
+      body: Stack(children: [_content, _miniPlayer]),
       bottomNavigationBar: Obx(() => BottomNavigationBar(
             showSelectedLabels: true,
             showUnselectedLabels: true,
@@ -85,4 +82,15 @@ class HomePage extends StatelessWidget {
           )),
     );
   }
+
+  Widget get _content => PageView(
+        controller: bloc.pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: [MusicsPage(), PlaylistPage(), PlanetPage(), SettingsPage()],
+      );
+
+  Widget get _miniPlayer => Align(
+        alignment: Alignment.bottomCenter,
+        child: MiniPlayerWidget(),
+      );
 }

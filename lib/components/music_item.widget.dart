@@ -60,21 +60,31 @@ class MusicItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            music.title ?? '',
-                            style: AppTextStyles.normal,
+                          Expanded(
+                            child: Text(
+                              music.title ?? '',
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyles.normal,
+                            ),
                           ),
-                          Text(
-                            music.duration.toDuration(),
-                            style: AppTextStyles.caption3,
+                          SizedBox(
+                            width: 50,
+                            child: Text(
+                              music.duration.toDuration(),
+                              textAlign: TextAlign.right,
+                              style: AppTextStyles.caption3,
+                            ),
                           )
                         ],
                       ),
                       const SizedBox(height: 2.5),
-                      Text(
-                        music.artist ?? '',
-                        style: AppTextStyles.caption2,
-                      )
+                      SizedBox(
+                          width: double.infinity,
+                          child: Text(
+                            music.artist ?? '',
+                            style: AppTextStyles.caption2,
+                            overflow: TextOverflow.ellipsis,
+                          ))
                     ]),
               ),
             )

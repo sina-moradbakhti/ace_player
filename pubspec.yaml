@@ -16,7 +16,6 @@ dependencies:
   rxdart: ^0.27.7
   cached_network_image: ^3.2.3
   flutter_svg: ^1.1.6
-  overlay_support: ^2.1.0
   auto_size_text: ^3.0.0
   file_picker: ^5.2.3
   id3: ^1.0.2

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher.dart' as ul;
 
 extension MusicPlayerExtensionOnInt on int {

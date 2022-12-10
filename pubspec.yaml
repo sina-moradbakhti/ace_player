@@ -27,6 +27,7 @@ dependencies:
   assets_audio_player: ^3.0.6
   in_app_review: ^2.0.6
   mailto: ^2.0.0
+  sleek_circular_slider: ^2.0.1
 
 dev_dependencies:
   flutter_test:

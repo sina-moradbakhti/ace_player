@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher.dart' as ul;
 
 extension MusicPlayerExtensionOnInt on int {
@@ -7,7 +5,7 @@ extension MusicPlayerExtensionOnInt on int {
     final seconds = this;
     final m = (seconds / 60).ceil();
     final s = (seconds % 60);
-    return '${m > 10 ? m : '0$m'}:${s > 10 ? s : '0$s'}';
+    return '${m >= 10 ? m : '0$m'}:${s >= 10 ? s : '0$s'}';
   }
 }
 

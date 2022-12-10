@@ -91,6 +91,9 @@ class HomePage extends StatelessWidget {
 
   Widget get _miniPlayer => Align(
         alignment: Alignment.bottomCenter,
-        child: MiniPlayerWidget(),
+        child: StreamBuilder(
+          stream: bloc.repo.player.player.playerState,
+          builder: (context, snapshot) => MiniPlayerWidget(),
+        ),
       );
 }

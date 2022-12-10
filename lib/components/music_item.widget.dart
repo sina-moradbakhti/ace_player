@@ -17,7 +17,7 @@ class MusicItem extends StatelessWidget {
     return InkWell(
       onTap: () => (repo.player.player.isPlaying.value &&
               music.path == repo.player.currentMusic?.path)
-          ? repo.player.pause(music)
+          ? repo.player.pause()
           : repo.player.play(music),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),

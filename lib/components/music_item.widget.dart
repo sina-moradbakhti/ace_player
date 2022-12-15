@@ -31,9 +31,11 @@ class MusicItem extends StatelessWidget {
                 height: 45,
                 child: Stack(
                   children: [
-                    CachedMemoryImage(
-                        uniqueKey: music.path,
-                        base64: music.apic?.base64Data ?? ''),
+                    music.apic == null
+                        ? Image.asset('assets/images/png/default-album-art.png')
+                        : CachedMemoryImage(
+                            uniqueKey: music.path,
+                            base64: music.apic?.base64Data ?? ''),
                     Center(
                       child: (repo.player.player.isPlaying.value &&
                               music.path == repo.player.currentMusic?.path)

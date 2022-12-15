@@ -27,43 +27,47 @@ class DownloadMusicBottomSheet extends StatelessWidget {
               onDownloadedMusic!(
                   bloc.downloadedFile!, bloc.downloadedFilename ?? '');
             }
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                bloc.downloadStatus.value == DownloadStatus.downloading ||
-                        bloc.downloadStatus.value == DownloadStatus.successed
-                    ? (bloc.downloadProgress.value >= 100
-                        ? const Icon(
-                            Ionicons.checkmark_circle_outline,
-                            size: 30,
-                          )
-                        : const MyLoading())
-                    : const Icon(
-                        Ionicons.close_circle_outline,
-                        size: 30,
-                      ),
-                const SizedBox(
-                  height: 20,
-                ),
-                if (bloc.downloadStatus.value == DownloadStatus.successed)
-                  Text(
-                    'Download Completed',
-                    style: AppTextStyles.normal,
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  bloc.downloadStatus.value == DownloadStatus.downloading ||
+                          bloc.downloadStatus.value == DownloadStatus.successed
+                      ? (bloc.downloadProgress.value >= 100
+                          ? const Icon(
+                              Ionicons.checkmark_circle_outline,
+                              size: 30,
+                            )
+                          : const MyLoading())
+                      : const Icon(
+                          Ionicons.close_circle_outline,
+                          size: 30,
+                        ),
+                  const SizedBox(
+                    height: 20,
                   ),
-                if (bloc.downloadStatus.value == DownloadStatus.failed)
-                  Text(
-                    'Download Failed!',
-                    style: AppTextStyles.normal,
+                  if (bloc.downloadStatus.value == DownloadStatus.successed)
+                    Text(
+                      'Download Completed',
+                      style: AppTextStyles.normal,
+                    ),
+                  if (bloc.downloadStatus.value == DownloadStatus.failed)
+                    Text(
+                      'Download Failed!',
+                      style: AppTextStyles.normal,
+                    ),
+                  if (bloc.downloadStatus.value == DownloadStatus.downloading)
+                    Text(
+                      'Downloading ... ${bloc.downloadProgress.value}%',
+                      style: AppTextStyles.normal,
+                    ),
+                  const SizedBox(
+                    height: 30,
                   ),
-                if (bloc.downloadStatus.value == DownloadStatus.downloading)
-                  Text(
-                    'Downloading ... ${bloc.downloadProgress.value}%',
-                    style: AppTextStyles.normal,
-                  ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
+                ],
+              ),
             );
           },
         ));

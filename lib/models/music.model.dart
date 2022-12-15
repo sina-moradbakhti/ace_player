@@ -28,7 +28,7 @@ class MusicModel {
       path: json['path'],
       duration: json['duration'],
       album: json['Album'],
-      apic: ApicModel.fromJson(json['APIC']),
+      apic: json['APIC'] == null ? null : ApicModel.fromJson(json['APIC']),
       artist: json['Artist'],
       genre: json['Genre'],
       title: json['Title'],

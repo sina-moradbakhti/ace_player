@@ -34,8 +34,8 @@ class MyAudioPlayer {
                   artist: music.artist ?? '',
                   album: music.album ?? '',
                   image: MetasImage.file('${music.path}.jpg'),
-                  onImageLoadFail: const MetasImage.network(
-                      'https://songdewnetwork.com/sgmedia/assets/images/default-album-art.png'))),
+                  onImageLoadFail: const MetasImage.asset(
+                      'assets/images/png/default-album-art.png'))),
           showNotification: true,
           notificationSettings: const NotificationSettings(
             playPauseEnabled: true,

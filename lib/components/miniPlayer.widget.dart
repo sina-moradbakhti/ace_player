@@ -44,10 +44,14 @@ class MiniPlayerWidget extends StatelessWidget {
                             height: _HEIGHT - 10,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(5),
-                              child: CachedMemoryImage(
-                                uniqueKey: _musicModel!.path,
-                                base64: _musicModel?.apic?.base64Data ?? '',
-                              ),
+                              child: _musicModel?.apic == null
+                                  ? Image.asset(
+                                      'assets/images/png/default-album-art.png')
+                                  : CachedMemoryImage(
+                                      uniqueKey: _musicModel!.path,
+                                      base64:
+                                          _musicModel?.apic?.base64Data ?? '',
+                                    ),
                             ),
                           ),
                           const SizedBox(width: 15),
@@ -80,11 +84,15 @@ class MiniPlayerWidget extends StatelessWidget {
                                         color: Get.theme.primaryColor,
                                       ),
                                     ),
-                                    Text(
-                                      _musicModel!.duration.toDuration(),
-                                      style: AppTextStyles.caption3,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                                    StreamBuilder<Duration>(
+                                        stream: bloc
+                                            .repo.player.player.currentPosition,
+                                        builder: (context, snapshot) => Text(
+                                              (snapshot.data?.inSeconds ?? 0)
+                                                  .toDuration(),
+                                              style: AppTextStyles.caption3,
+                                              overflow: TextOverflow.ellipsis,
+                                            )),
                                   ],
                                 ),
                               )
@@ -161,7 +169,7 @@ class MiniPlayerWidget extends StatelessWidget {
         radius: 18,
         backgroundColor: Get.theme.primaryColor,
         child: SvgPicture.asset(
-          '134__fast forward'.getSvgPath,
+          '136__next'.getSvgPath,
           color: Get.theme.buttonTheme.colorScheme?.onPrimary,
         ),
       ));
@@ -172,7 +180,7 @@ class MiniPlayerWidget extends StatelessWidget {
         radius: 18,
         backgroundColor: Get.theme.primaryColor,
         child: SvgPicture.asset(
-          '135__rewind'.getSvgPath,
+          '137__previous'.getSvgPath,
           color: Get.theme.buttonTheme.colorScheme?.onPrimary,
         ),
       ));

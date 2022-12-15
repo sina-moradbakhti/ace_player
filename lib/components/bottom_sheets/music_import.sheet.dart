@@ -1,15 +1,19 @@
+import 'package:ace_player/blocs/musics.bloc.dart';
 import 'package:ace_player/components/bottom_sheets/bottom_sheet_base.widget.dart';
 import 'package:ace_player/components/bottom_sheets/bottom_sheet_item.widget.dart';
 import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 
 class MusicImportBottomSheet extends StatelessWidget {
   final VoidCallback? onTappedFromFile;
   final VoidCallback? onTappedFromClipboard;
 
-  const MusicImportBottomSheet(
+  MusicImportBottomSheet(
       {super.key, this.onTappedFromClipboard, this.onTappedFromFile});
+
+  final bloc = Get.find<MusicsBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,13 @@ class MusicImportBottomSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          BottomSheetItemButton(
-            title: 'From Files',
-            icon: const Icon(Ionicons.folder_open_outline),
-            onTapped: onTappedFromFile,
+          Obx(
+            () => BottomSheetItemButton(
+              title: 'From Files',
+              icon: const Icon(Ionicons.folder_open_outline),
+              onTapped: onTappedFromFile,
+              loading: bloc.pickingFiles.value,
+            ),
           ),
           const SizedBox(
             height: 30,

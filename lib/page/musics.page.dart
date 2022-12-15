@@ -63,7 +63,7 @@ class MusicsPage extends StatelessWidget {
   }
 
   Widget get _myList => ListView.separated(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16).copyWith(bottom: 100),
         itemBuilder: (context, index) =>
             MusicItem(music: bloc.repo.musics[index]),
         itemCount: bloc.repo.musics.length,

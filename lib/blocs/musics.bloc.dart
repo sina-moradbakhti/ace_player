@@ -15,6 +15,7 @@ import 'package:id3/id3.dart';
 
 class MusicsBloc extends BlocBase {
   var updateList = true.obs;
+  var pickingFiles = false.obs;
 
   Directory? appDocDir;
   String? appDocPath;
@@ -41,11 +42,15 @@ class MusicsBloc extends BlocBase {
       final exist =
           repo.musics.where((element) => element.path == file).toList();
       if (exist.isEmpty) {
-        final apic = ApicModel.fromJson(metaData['APIC']);
+        final apic = metaData['APIC'] == null
+            ? null
+            : ApicModel.fromJson(metaData['APIC']);
         final musicArtFilePath =
             '$appDocPath/al_flutter/al_audio/${metaData['filename']}.jpg';
-        await File(musicArtFilePath)
-            .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+        if (apic != null) {
+          await File(musicArtFilePath)
+              .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+        }
 
         _addMusicToMusics(metaData);
         updateList.value = !updateList.value;
@@ -61,6 +66,7 @@ class MusicsBloc extends BlocBase {
 
   void _importFromPicker() async {
     final result = await filePicker.pickFiles(allowMultiple: true);
+    pickingFiles.value = true;
     for (final file in result?.files ?? []) {
       final metaData = await _getMetaData(file);
       if (metaData != null) {
@@ -75,6 +81,7 @@ class MusicsBloc extends BlocBase {
         }
       }
     }
+    pickingFiles.value = false;
   }
 
   _addMusicToMusics(var metaData) async {
@@ -97,13 +104,18 @@ class MusicsBloc extends BlocBase {
 
       json['filename'] = !isPath ? file.name : filename;
       json['duration'] = ((metaDataExtra.trackDuration ?? 0) / 1000).ceil();
-      final apic = ApicModel.fromJson(json['APIC']);
+
+      final apic =
+          json['APIC'] == null ? null : ApicModel.fromJson(json['APIC']);
 
       if (!isPath) {
         final musicFilePath = '$appDocPath/${json['filename']}';
         final musicArtFilePath = '$appDocPath/${json['filename']}.jpg';
-        await File(musicArtFilePath)
-            .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+        if (apic != null) {
+          await File(musicArtFilePath)
+              .writeAsBytes(const Base64Decoder().convert(apic.base64Data));
+        }
+
         await File(musicFilePath).writeAsBytes(mp3Bytes);
         json['path'] = musicFilePath;
       } else {

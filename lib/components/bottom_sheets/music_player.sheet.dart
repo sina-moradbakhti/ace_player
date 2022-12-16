@@ -49,8 +49,8 @@ class MusicPlayerBottomSheet extends StatelessWidget {
                     child: Column(
                       children: [
                         SizedBox(
-                          width: Get.size.width / 1.5,
-                          height: Get.size.width / 1.5,
+                          width: Get.size.height / 4,
+                          height: Get.size.height / 4,
                           child: Stack(
                             alignment: Alignment.center,
                             children: [
@@ -75,10 +75,11 @@ class MusicPlayerBottomSheet extends StatelessWidget {
                                           totalSec),
                                   min: 0,
                                   max: 100,
-                                  onChange: (value) => bloc.repo.player.player
-                                      .seek(Duration(
-                                          seconds: ((totalSec * value) / 100)
-                                              .ceil())),
+                                  onChangeEnd: (value) {
+                                    bloc.repo.player.player.seek(Duration(
+                                        seconds: ((totalSec * value) / 100)
+                                            .floor()));
+                                  },
                                   innerWidget: (_) => Column(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     crossAxisAlignment:
@@ -103,18 +104,20 @@ class MusicPlayerBottomSheet extends StatelessWidget {
                                     ],
                                   ),
                                   appearance: CircularSliderAppearance(
+                                      size: 60,
+                                      animationEnabled: false,
                                       customColors: CustomSliderColors(
                                           dynamicGradient: false,
                                           trackColor: Colors.white,
                                           progressBarColors: [
-                                        Get.theme.primaryColor,
-                                        Colors.greenAccent,
-                                        Get.theme.primaryColor,
-                                      ],
+                                            Get.theme.primaryColor,
+                                            Colors.greenAccent,
+                                            Get.theme.primaryColor,
+                                          ],
                                           trackColors: [
-                                        Colors.white.withOpacity(0.3),
-                                        Colors.white.withOpacity(0.6)
-                                      ])),
+                                            Colors.white.withOpacity(0.3),
+                                            Colors.white.withOpacity(0.6)
+                                          ])),
                                 ),
                               )
                             ],

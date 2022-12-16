@@ -149,7 +149,7 @@ class MiniPlayerWidget extends StatelessWidget {
                 ? bloc.repo.player.pause
                 : () => bloc.repo.player.play(_musicModel!),
             child: CircleAvatar(
-              radius: 23,
+              radius: 21,
               backgroundColor: Get.theme.primaryColor,
               child: SvgPicture.asset(
                 (snapshot.data != PlayerState.pause
@@ -166,7 +166,7 @@ class MiniPlayerWidget extends StatelessWidget {
   Widget get _nextBtn => InkWell(
       onTap: () => bloc.repo.player.next(),
       child: CircleAvatar(
-        radius: 18,
+        radius: 16,
         backgroundColor: Get.theme.primaryColor,
         child: SvgPicture.asset(
           '136__next'.getSvgPath,
@@ -177,7 +177,7 @@ class MiniPlayerWidget extends StatelessWidget {
   Widget get _prevBtn => InkWell(
       onTap: () => bloc.repo.player.previous(),
       child: CircleAvatar(
-        radius: 18,
+        radius: 16,
         backgroundColor: Get.theme.primaryColor,
         child: SvgPicture.asset(
           '137__previous'.getSvgPath,

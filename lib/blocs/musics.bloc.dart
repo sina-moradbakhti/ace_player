@@ -65,23 +65,31 @@ class MusicsBloc extends BlocBase {
   }
 
   void _importFromPicker() async {
-    final result = await filePicker.pickFiles(allowMultiple: true);
-    pickingFiles.value = true;
-    for (final file in result?.files ?? []) {
-      final metaData = await _getMetaData(file);
-      if (metaData != null) {
-        final exist =
-            repo.musics.where((element) => element.path == file.path).toList();
-        if (exist.isEmpty) {
-          _addMusicToMusics(metaData);
-          updateList.value = !updateList.value;
-          closeBottomSheet();
-        } else {
-          showError('This music already added into the list!');
+    try {
+      final result = await filePicker.pickFiles(
+          allowMultiple: true,
+          allowedExtensions: ['mp3'],
+          type: FileType.custom);
+      pickingFiles.value = true;
+      for (final file in result?.files ?? []) {
+        final metaData = await _getMetaData(file);
+        if (metaData != null) {
+          final exist = repo.musics
+              .where((element) => element.path == file.path)
+              .toList();
+          if (exist.isEmpty) {
+            _addMusicToMusics(metaData);
+            updateList.value = !updateList.value;
+            closeBottomSheet();
+          } else {
+            showError('This music already added into the list!');
+          }
         }
       }
+      pickingFiles.value = false;
+    } catch (er) {
+      print(er);
     }
-    pickingFiles.value = false;
   }
 
   _addMusicToMusics(var metaData) async {

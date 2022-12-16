@@ -86,14 +86,36 @@ class HomePage extends StatelessWidget {
   Widget get _content => PageView(
         controller: bloc.pageController,
         physics: const NeverScrollableScrollPhysics(),
-        children: [MusicsPage(), PlaylistPage(), PlanetPage(), SettingsPage()],
+        children: [
+          MusicsPage(),
+          PlaylistPage(),
+          const PlanetPage(),
+          SettingsPage()
+        ],
       );
 
   Widget get _miniPlayer => Align(
         alignment: Alignment.bottomCenter,
         child: StreamBuilder(
           stream: bloc.repo.player.player.playerState,
-          builder: (context, snapshot) => MiniPlayerWidget(),
+          builder: (context, snapshot) => GestureDetector(
+            onPanUpdate: (details) {
+              if (details.delta.dy > 0) {
+                bloc.repo.player.stop();
+              }
+            },
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 150),
+              transitionBuilder: (child, animation) => SlideTransition(
+                  position: Tween<Offset>(
+                          begin: const Offset(0, 1), end: const Offset(0, 0))
+                      .animate(animation),
+                  child: child),
+              child: bloc.repo.player.currentMusic == null
+                  ? Container(height: 80)
+                  : MiniPlayerWidget(),
+            ),
+          ),
         ),
       );
 }

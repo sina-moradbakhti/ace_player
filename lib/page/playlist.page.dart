@@ -1,4 +1,5 @@
 import 'package:ace_player/blocs/playlist.bloc.dart';
+import 'package:ace_player/components/playlist_item.dart';
 import 'package:ace_player/configs.dart';
 import 'package:ace_player/utils/ext.dart';
 import 'package:flutter/material.dart';
@@ -50,9 +51,22 @@ class PlaylistPage extends StatelessWidget {
           )
         ],
       ),
-      body: _emptyPlaylist,
+      body: StreamBuilder(
+          stream: bloc.repo.playlistStream,
+          builder: (context, snapshot) {
+            return bloc.repo.playlist.isNotEmpty ? _playlist : _emptyPlaylist;
+          }),
     );
   }
+
+  Widget get _playlist => Center(
+          child: ListView.separated(
+        separatorBuilder: (context, index) => const SizedBox(height: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        itemBuilder: (context, index) =>
+            PlayListItem(item: bloc.repo.playlist[index]),
+        itemCount: bloc.repo.playlist.length,
+      ));
 
   Widget get _emptyPlaylist => Center(
           child: Column(

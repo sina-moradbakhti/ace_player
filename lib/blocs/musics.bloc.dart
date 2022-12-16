@@ -39,8 +39,9 @@ class MusicsBloc extends BlocBase {
   void _importFromClipboard(var file, var filename) async {
     final metaData = await _getMetaData(file, isPath: true, filename: filename);
     if (metaData != null) {
-      final exist =
-          repo.musics.where((element) => element.path == file).toList();
+      final exist = repo.musics
+          .where((element) => file.toString().contains(element.filename))
+          .toList();
       if (exist.isEmpty) {
         final apic = metaData['APIC'] == null
             ? null
@@ -71,11 +72,11 @@ class MusicsBloc extends BlocBase {
           allowedExtensions: ['mp3'],
           type: FileType.custom);
       pickingFiles.value = true;
-      for (final file in result?.files ?? []) {
+      for (PlatformFile file in result?.files ?? []) {
         final metaData = await _getMetaData(file);
         if (metaData != null) {
           final exist = repo.musics
-              .where((element) => element.path == file.path)
+              .where((element) => element.path.contains(file.name))
               .toList();
           if (exist.isEmpty) {
             _addMusicToMusics(metaData);
